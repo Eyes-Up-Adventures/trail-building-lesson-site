@@ -87,106 +87,85 @@
       </p>
     </section>
 
-    <!-- Interactive trail design tool -->
-    <section id="designer">
-      <h2>Trail Design Tool</h2>
+    <!-- Trail drawing exercise -->
+    <section id="draw">
+      <h2>Trail Drawing Exercise</h2>
       <p>
-        Use the sliders and selections below to design a section of trail.
-        Recommended parameters will update automatically based on your choices.
-      </p>
-      <div class="input-group">
-        <label for="sideslope">Sideslope (0–60 %): <span id="sideslope-value">20</span>%</label>
-        <input type="range" id="sideslope" min="0" max="60" value="20" />
-      </div>
-      <div class="input-group">
-        <label for="soil">Soil Type:</label>
-        <select id="soil">
-          <option value="loam">Loam</option>
-          <option value="sandy">Sandy</option>
-          <option value="rocky">Rocky</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <label for="users">Primary Users:</label>
-        <select id="users">
-          <option value="bikers">Bikers &amp; Hikers</option>
-          <option value="equestrian">Equestrian</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <label for="vertical-gain">Vertical Gain (ft):</label>
-        <input type="number" id="vertical-gain" value="200" min="0" />
-      </div>
-      <div class="input-group">
-        <label for="flow">Desired Flow Style:</label>
-        <select id="flow">
-          <option value="gentle">Gentle</option>
-          <option value="rolling">Rolling</option>
-          <option value="technical">Technical</option>
-        </select>
-      </div>
-      <button id="compute">Generate Recommendations</button>
-      <div id="design-output" class="output"></div>
-
-      <!-- Interactive map for drawing a trail -->
-      <h3>Draw Your Trail</h3>
-      <p>
-        Click on the map below to add points and sketch a possible trail route across
-        a topographic basemap of the Rangeley, Maine region. As you add points,
-        the total length of your drawn path will update automatically. Use the
+        The best way to learn trail layout is to experiment on a map. Below is a
+        topographic basemap of the Rangeley, Maine region. Click on the map to
+        sketch a potential trail alignment—each click adds a point to your route.
+        The total length of your drawn path updates automatically. Use the
         “Reset Path” button to clear the drawing and start over.
       </p>
-      <!-- Canvas used for the map and drawing. The map image is loaded via JavaScript. -->
       <canvas id="mapCanvas" class="map-canvas"></canvas>
       <button id="reset-path">Reset Path</button>
       <div id="path-length" class="output"></div>
+    </section>
+
+    <!-- Instructional Videos -->
+    <section id="videos">
+      <h2>Instructional Videos</h2>
+      <p>
+        Watching experts build and shape trails can be incredibly helpful. Here are two
+        instructional videos from the mountain‑biking community that demonstrate
+        sustainable trail construction and feature building. These are hosted on YouTube
+        for easy viewing and sharing.
+      </p>
+      <div class="video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/V0GTKmy0UYQ" title="How to Build MTB Trails – Trail Building Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jrURo-t0Iao" title="The Art of Building MTB Trails by Hand" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </section>
 
     <!-- Quiz Section -->
     <section id="quiz">
       <h2>Knowledge Check</h2>
       <p>
-        Answer the questions below to test your understanding of sustainable
-        trail design principles. Click “Submit Answers” to see your score and
-        explanations.
+        Test your understanding of sustainable trail design principles using the
+        short quiz below. When you submit the form, the responses will be
+        emailed to the address configured in the form action. Replace
+        <code>YOUR_EMAIL@example.com</code> with your own email to collect
+        results (this uses <a href="https://formsubmit.co" target="_blank">FormSubmit</a>
+        to forward the answers).
       </p>
-      <form id="quiz-form">
+      <form action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST">
+        <!-- Disable CAPTCHA -->
+        <input type="hidden" name="_captcha" value="false" />
         <div class="question">
           <p>1. What does the half rule recommend?</p>
-          <label><input type="radio" name="q1" value="a" /> A trail’s grade
-          should be equal to the hillside grade.</label><br />
-          <label><input type="radio" name="q1" value="b" /> A trail’s grade
-          should not exceed half the hillside grade.</label><br />
-          <label><input type="radio" name="q1" value="c" /> A trail’s grade
-          can be double the hillside grade if soil is rocky.</label>
+          <label><input type="radio" name="q1" value="Equal to hillside" required />
+            The trail’s grade should be equal to the hillside grade.</label><br />
+          <label><input type="radio" name="q1" value="Half of hillside" />
+            The trail’s grade should not exceed half the hillside grade.</label><br />
+          <label><input type="radio" name="q1" value="Double if rocky" />
+            The trail’s grade can be double the hillside grade if soil is rocky.</label>
         </div>
         <div class="question">
           <p>2. What is a typical average grade for sustainable trails?</p>
-          <label><input type="radio" name="q2" value="a" /> 2&nbsp;%</label><br />
-          <label><input type="radio" name="q2" value="b" /> 25&nbsp;%</label><br />
-          <label><input type="radio" name="q2" value="c" /> 10&nbsp;% or
-          less</label>
+          <label><input type="radio" name="q2" value="2%" required /> 2&nbsp;%</label><br />
+          <label><input type="radio" name="q2" value="25%" /> 25&nbsp;%</label><br />
+          <label><input type="radio" name="q2" value="10% or less" /> 10&nbsp;% or less</label>
         </div>
         <div class="question">
           <p>3. Why are grade reversals important?</p>
-          <label><input type="radio" name="q3" value="a" /> They improve
-          aesthetics only.</label><br />
-          <label><input type="radio" name="q3" value="b" /> They reduce the
-          need for outslope.</label><br />
-          <label><input type="radio" name="q3" value="c" /> They force water
-          off the trail and add riding variety.</label>
+          <label><input type="radio" name="q3" value="Aesthetics only" required />
+            They improve aesthetics only.</label><br />
+          <label><input type="radio" name="q3" value="Reduce need for outslope" />
+            They reduce the need for outslope.</label><br />
+          <label><input type="radio" name="q3" value="Shed water and add variety" />
+            They force water off the trail and add riding variety.</label>
         </div>
         <div class="question">
           <p>4. How tall should a typical trail corridor be?</p>
-          <label><input type="radio" name="q4" value="a" /> 8&nbsp;ft for
-          most users; 10&nbsp;ft for equestrians.</label><br />
-          <label><input type="radio" name="q4" value="b" /> 4&nbsp;ft for
-          hikers and bikers, 6&nbsp;ft for equestrians.</label><br />
-          <label><input type="radio" name="q4" value="c" /> 12&nbsp;ft for
-          all uses.</label>
+          <label><input type="radio" name="q4" value="8 ft (10 ft for equestrians)" required />
+            8&nbsp;ft for most users; 10&nbsp;ft for equestrians.</label><br />
+          <label><input type="radio" name="q4" value="4 ft / 6 ft" />
+            4&nbsp;ft for hikers and bikers, 6&nbsp;ft for equestrians.</label><br />
+          <label><input type="radio" name="q4" value="12 ft" /> 12&nbsp;ft for all uses.</label>
         </div>
-        <button type="button" id="submit-quiz">Submit Answers</button>
-        <div id="quiz-output" class="output"></div>
+        <button type="submit">Submit Answers</button>
       </form>
     </section>
 
@@ -199,12 +178,7 @@
       </p>
     </footer>
 
-    <!-- Leaflet JS for interactive map -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-o9N1j7SLB3Zg5nU5TiSWzY/+wDWrsFMra9vgKmVZp4o="
-      crossorigin=""
-    ></script>
+    <!-- Local script to handle interactive map drawing -->
     <script src="script.js"></script>
   </body>
 </html>
