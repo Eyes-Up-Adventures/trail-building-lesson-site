@@ -123,48 +123,68 @@
     <section id="quiz">
       <h2>Knowledge Check</h2>
       <p>
-        Test your understanding of sustainable trail design principles using the
-        short quiz below. When you submit the form, the responses will be
-        emailed to the address configured in the form action. Replace
-        <code>YOUR_EMAIL@example.com</code> with your own email to collect
-        results (this uses <a href="https://formsubmit.co" target="_blank">FormSubmit</a>
-        to forward the answers).
+        Test your understanding of sustainable trail design and the instructional
+        videos. When you submit this form, the answers will be emailed to
+        <strong>stephen.whitney1999@gmail.com</strong> via
+        <a href="https://formsubmit.co" target="_blank">FormSubmit</a>. A field
+        for your name is included so submissions can be matched to each student.
+        The drawn trail’s GPX data will also be included automatically.
       </p>
-      <form action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST">
-        <!-- Disable CAPTCHA -->
+      <form id="quiz-form" action="https://formsubmit.co/stephen.whitney1999@gmail.com" method="POST">
+        <!-- Disable CAPTCHA to streamline submission -->
         <input type="hidden" name="_captcha" value="false" />
+        <!-- Provide a more descriptive email subject -->
+        <input type="hidden" name="_subject" value="New Trail Lesson Submission" />
+        <!-- Hidden field to store the GPX data of the drawn trail -->
+        <input type="hidden" name="trail_gpx" id="trail-gpx" />
+
         <div class="question">
-          <p>1. What does the half rule recommend?</p>
-          <label><input type="radio" name="q1" value="Equal to hillside" required />
-            The trail’s grade should be equal to the hillside grade.</label><br />
-          <label><input type="radio" name="q1" value="Half of hillside" />
-            The trail’s grade should not exceed half the hillside grade.</label><br />
-          <label><input type="radio" name="q1" value="Double if rocky" />
-            The trail’s grade can be double the hillside grade if soil is rocky.</label>
+          <label for="student-name"><strong>Your name:</strong></label><br />
+          <input type="text" id="student-name" name="student_name" placeholder="Enter your full name" required />
         </div>
+
         <div class="question">
-          <p>2. What is a typical average grade for sustainable trails?</p>
-          <label><input type="radio" name="q2" value="2%" required /> 2&nbsp;%</label><br />
-          <label><input type="radio" name="q2" value="25%" /> 25&nbsp;%</label><br />
-          <label><input type="radio" name="q2" value="10% or less" /> 10&nbsp;% or less</label>
+          <p>1. According to the IMBA half rule, what is the maximum trail grade on a hillside that slopes 20&nbsp;%?</p>
+          <label><input type="radio" name="q1" value="20%" required /> 20&nbsp;% (same as hillside)</label><br />
+          <label><input type="radio" name="q1" value="10%" /> 10&nbsp;% (half of hillside)</label><br />
+          <label><input type="radio" name="q1" value="5%" /> 5&nbsp;% (one quarter of hillside)</label>
         </div>
+
         <div class="question">
-          <p>3. Why are grade reversals important?</p>
-          <label><input type="radio" name="q3" value="Aesthetics only" required />
-            They improve aesthetics only.</label><br />
-          <label><input type="radio" name="q3" value="Reduce need for outslope" />
-            They reduce the need for outslope.</label><br />
-          <label><input type="radio" name="q3" value="Shed water and add variety" />
-            They force water off the trail and add riding variety.</label>
+          <p>2. When planning a route, which of these is a <strong>negative</strong> control point?</p>
+          <label><input type="radio" name="q2" value="Scenic vista" required /> Scenic vista</label><br />
+          <label><input type="radio" name="q2" value="Rock outcrop" /> Rock outcrop</label><br />
+          <label><input type="radio" name="q2" value="Wetland" /> Wetland</label>
         </div>
+
         <div class="question">
-          <p>4. How tall should a typical trail corridor be?</p>
-          <label><input type="radio" name="q4" value="8 ft (10 ft for equestrians)" required />
-            8&nbsp;ft for most users; 10&nbsp;ft for equestrians.</label><br />
-          <label><input type="radio" name="q4" value="4 ft / 6 ft" />
-            4&nbsp;ft for hikers and bikers, 6&nbsp;ft for equestrians.</label><br />
-          <label><input type="radio" name="q4" value="12 ft" /> 12&nbsp;ft for all uses.</label>
+          <p>3. In the first video (“How to Build MTB Trails – Trail Building Tutorial”), what’s an essential step when constructing a berm?</p>
+          <label><input type="radio" name="q3" value="Build on flat ground" required /> Build the berm on flat ground without shaping</label><br />
+          <label><input type="radio" name="q3" value="Remove organic layer and compact subsoil" /> Remove the organic top layer and compact the subsoil before shaping</label><br />
+          <label><input type="radio" name="q3" value="Add loose leaves for traction" /> Add loose leaves inside the berm for extra traction</label>
         </div>
+
+        <div class="question">
+          <p>4. How frequently should grade reversals (rolling dips) occur on a sustainable trail?</p>
+          <label><input type="radio" name="q4" value="Every 20–50 ft" required /> Every 20–50&nbsp;ft</label><br />
+          <label><input type="radio" name="q4" value="Once per mile" /> Once per mile</label><br />
+          <label><input type="radio" name="q4" value="Only at switchbacks" /> Only at switchbacks</label>
+        </div>
+
+        <div class="question">
+          <p>5. In the videos, which practice helps water drain off the trail tread?</p>
+          <label><input type="radio" name="q5" value="Build high berms" required /> Build high berms</label><br />
+          <label><input type="radio" name="q5" value="Outslope the trail" /> Outslope the trail</label><br />
+          <label><input type="radio" name="q5" value="Paint trail markers" /> Paint trail markers</label>
+        </div>
+
+        <div class="question">
+          <p>6. Why should flat, low‑lying areas be avoided when designing a trail?</p>
+          <label><input type="radio" name="q6" value="To increase difficulty" required /> To make the trail more challenging</label><br />
+          <label><input type="radio" name="q6" value="To reduce erosion and muddy sections" /> To reduce erosion and muddy, flooded sections</label><br />
+          <label><input type="radio" name="q6" value="To save construction time" /> To save time during construction</label>
+        </div>
+
         <button type="submit">Submit Answers</button>
       </form>
     </section>

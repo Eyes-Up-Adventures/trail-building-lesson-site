@@ -113,19 +113,42 @@ document.addEventListener('DOMContentLoaded', () => {
       return R * c;
     }
     // Update the displayed path length
+    // Convert the current path to a simple GPX string.  Each point is represented as a <trkpt>
+    function generateGpx(points) {
+      let gpx = '<?xml version="1.0" encoding="UTF-8"?>\n';
+      gpx += '<gpx version="1.1" creator="Trail Lesson">\n';
+      gpx += '  <trk>\n    <name>Student Trail</name>\n    <trkseg>\n';
+      points.forEach(pt => {
+        gpx += `      <trkpt lat="${pt.lat}" lon="${pt.lon}"></trkpt>\n`;
+      });
+      gpx += '    </trkseg>\n  </trk>\n</gpx>';
+      return gpx;
+    }
+
+    // Update the displayed path length and store GPX data in a hidden input if present
     function updateLength() {
       if (pathPoints.length < 2) {
         lengthDiv.innerHTML = '';
-        return;
+      } else {
+        let total = 0;
+        for (let i = 1; i < pathPoints.length; i++) {
+          const p1 = pathPoints[i - 1];
+          const p2 = pathPoints[i];
+          total += haversine(p1.lat, p1.lon, p2.lat, p2.lon);
+        }
+        const miles = total / 1609.34;
+        lengthDiv.innerHTML = `<p><strong>Drawn path length:</strong> ${miles.toFixed(2)} mi</p>`;
       }
-      let total = 0;
-      for (let i = 1; i < pathPoints.length; i++) {
-        const p1 = pathPoints[i - 1];
-        const p2 = pathPoints[i];
-        total += haversine(p1.lat, p1.lon, p2.lat, p2.lon);
+      // Update hidden GPX field if it exists
+      const gpxInput = document.getElementById('trail-gpx');
+      if (gpxInput) {
+        // Only store GPX when at least two points exist
+        if (pathPoints.length >= 2) {
+          gpxInput.value = generateGpx(pathPoints);
+        } else {
+          gpxInput.value = '';
+        }
       }
-      const miles = total / 1609.34;
-      lengthDiv.innerHTML = `<p><strong>Drawn path length:</strong> ${miles.toFixed(2)} mi</p>`;
     }
     // Handle clicks on the canvas to add points
     canvas.addEventListener('click', function (e) {
@@ -144,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
       pathPoints = [];
       lengthDiv.innerHTML = '';
       draw();
+      // Ensure any GPX data is cleared
+      updateLength();
     });
   }
 });
