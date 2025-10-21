@@ -159,9 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize the Leaflet map only if the map container exists
   const mapContainer = document.getElementById('map');
   if (mapContainer) {
-    // Set a default location and zoom. This can be any scenic region; here we use Colorado foothills.
-    const map = L.map('map').setView([39.5, -105.5], 13);
-    // Use OpenTopoMap tiles for a topographic basemap
+    // Set the default map location and zoom.  Use Rangeley, Maine (44.96° N, −70.64° W), a mountainous region in the Appalachians.
+    const map = L.map('map').setView([44.96, -70.64], 13);
+    // Use OpenTopoMap tiles for a topographic basemap.  This layer provides contour lines and shading
+    // suitable for trail design exercises.
     L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
       maxZoom: 17,
       attribution:
