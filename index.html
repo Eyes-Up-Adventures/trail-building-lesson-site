@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sustainable Trail‑Building Lesson</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Leaflet CSS for interactive map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-oWX2jMOBwray5qKMLPUxNwBZM9A0TWPqKBrC35uo3nA=" crossorigin="" />
   </head>
   <body>
     <header>
@@ -60,6 +62,22 @@
         wide enough for a single user; equestrian trails need a 10‑foot tall
         corridor. Clearing vegetation improves sightlines and safety.
       </p>
+
+      <h3>Where to Build</h3>
+      <p>
+        Careful site selection is essential for sustainability. During the design
+        process, identify control points on your map: <strong>positive</strong>
+        control points such as scenic vistas, rock outcroppings, or gently
+        sided slopes you want to visit, and <strong>negative</strong>
+        control points you want to avoid. Negative points include
+        low‑lying <em>wet areas</em>, wetlands, riparian zones, sensitive wildlife
+        habitat, and flat ground that may hold water or sand【270424385173608†L3974-L3985】.
+        Plot these points on a topographic map, using green for the positive
+        points and red for the negative ones, then sketch a preliminary contour
+        route that connects the positives while steering clear of the negatives【270424385173608†L4038-L4047】.  This
+        planning helps ensure your trail follows natural contours and avoids
+        problematic terrain.
+      </p>
       <h3>Design Process</h3>
       <p>
         IMBA recommends an 11‑step process for designing new trails: obtain
@@ -112,6 +130,18 @@
       </div>
       <button id="compute">Generate Recommendations</button>
       <div id="design-output" class="output"></div>
+
+      <!-- Interactive map for drawing a trail -->
+      <h3>Draw Your Trail</h3>
+      <p>
+        Click on the map to add points and sketch a possible trail route across
+        a topographic basemap. The total length of your drawn path will
+        update as you add points. Use the “Reset Path” button to clear the
+        drawing and start over.
+      </p>
+      <div id="map" class="map-container"></div>
+      <button id="reset-path">Reset Path</button>
+      <div id="map-output" class="output"></div>
     </section>
 
     <!-- Quiz Section -->
@@ -135,25 +165,25 @@
         <div class="question">
           <p>2. What is a typical average grade for sustainable trails?</p>
           <label><input type="radio" name="q2" value="a" /> 2&nbsp;%</label><br />
-          <label><input type="radio" name="q2" value="b" /> 10&nbsp;% or
-          less</label><br />
-          <label><input type="radio" name="q2" value="c" /> 25&nbsp;%</label>
+          <label><input type="radio" name="q2" value="b" /> 25&nbsp;%</label><br />
+          <label><input type="radio" name="q2" value="c" /> 10&nbsp;% or
+          less</label>
         </div>
         <div class="question">
           <p>3. Why are grade reversals important?</p>
           <label><input type="radio" name="q3" value="a" /> They improve
           aesthetics only.</label><br />
-          <label><input type="radio" name="q3" value="b" /> They force water
-          off the trail and add riding variety.</label><br />
-          <label><input type="radio" name="q3" value="c" /> They reduce the
-          need for outslope.</label>
+          <label><input type="radio" name="q3" value="b" /> They reduce the
+          need for outslope.</label><br />
+          <label><input type="radio" name="q3" value="c" /> They force water
+          off the trail and add riding variety.</label>
         </div>
         <div class="question">
           <p>4. How tall should a typical trail corridor be?</p>
-          <label><input type="radio" name="q4" value="a" /> 4&nbsp;ft for
-          hikers and bikers, 6&nbsp;ft for equestrians.</label><br />
-          <label><input type="radio" name="q4" value="b" /> 8&nbsp;ft for
+          <label><input type="radio" name="q4" value="a" /> 8&nbsp;ft for
           most users; 10&nbsp;ft for equestrians.</label><br />
+          <label><input type="radio" name="q4" value="b" /> 4&nbsp;ft for
+          hikers and bikers, 6&nbsp;ft for equestrians.</label><br />
           <label><input type="radio" name="q4" value="c" /> 12&nbsp;ft for
           all uses.</label>
         </div>
@@ -171,6 +201,12 @@
       </p>
     </footer>
 
+    <!-- Leaflet JS for interactive map -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-o9N1j7SLB3Zg5nU5TiSWzY/+wDWrsFMra9vgKmVZp4o="
+      crossorigin=""
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>

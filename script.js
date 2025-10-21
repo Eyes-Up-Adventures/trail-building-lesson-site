@@ -104,7 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Question 2
     const q2 = document.querySelector('input[name="q2"]:checked');
-    if (q2 && q2.value === 'b') {
+    // For Q2, option C (value "c") is correct (10% or less)
+    if (q2 && q2.value === 'c') {
       score++;
       explanations.push(
         'Q2: Correct! Sustainable trails usually average around 10% grade or less.'
@@ -116,19 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Question 3
     const q3 = document.querySelector('input[name="q3"]:checked');
-    if (q3 && q3.value === 'b') {
+    // For Q3, option C (value "c") is correct
+    if (q3 && q3.value === 'c') {
       score++;
       explanations.push(
         'Q3: Correct! Grade reversals both shed water off the trail and add variety for users.'
       );
     } else {
       explanations.push(
-        'Q3: Incorrect. Grade reversals are needed to drain water and improve trail flow; they do more than aesthetics.'
+        'Q3: Incorrect. Grade reversals are needed to drain water and improve trail flow; they do more than aesthetics or simply reducing outslope.'
       );
     }
     // Question 4
     const q4 = document.querySelector('input[name="q4"]:checked');
-    if (q4 && q4.value === 'b') {
+    // For Q4, option A (value "a") is correct
+    if (q4 && q4.value === 'a') {
       score++;
       explanations.push(
         'Q4: Correct! An 8‑foot corridor is common for hikers and bikers, while equestrian trails need about 10 feet of clearance.'
@@ -149,4 +152,55 @@ document.addEventListener('DOMContentLoaded', () => {
     resultHtml += '</ul>';
     quizOutput.innerHTML = resultHtml;
   });
+
+  // ---- Interactive Map Drawing ----
+  const mapOutput = document.getElementById('map-output');
+  const resetPathBtn = document.getElementById('reset-path');
+  // Initialize the Leaflet map only if the map container exists
+  const mapContainer = document.getElementById('map');
+  if (mapContainer) {
+    // Set a default location and zoom. This can be any scenic region; here we use Colorado foothills.
+    const map = L.map('map').setView([39.5, -105.5], 13);
+    // Use OpenTopoMap tiles for a topographic basemap
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      maxZoom: 17,
+      attribution:
+        'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://viewfinderpanoramas.org">SRTM</a> | Map style: © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',
+    }).addTo(map);
+    let path = [];
+    let polyline = null;
+    function updateLength() {
+      if (path.length < 2) {
+        mapOutput.innerHTML = '';
+        return;
+      }
+      let totalMeters = 0;
+      for (let i = 1; i < path.length; i++) {
+        totalMeters += path[i - 1].distanceTo(path[i]);
+      }
+      const miles = totalMeters / 1609.34;
+      mapOutput.innerHTML = `<p><strong>Drawn path length:</strong> ${miles.toFixed(
+        2
+      )} mi</p>`;
+    }
+    // Add click handler to record points
+    map.on('click', (e) => {
+      path.push(e.latlng);
+      if (polyline) {
+        polyline.setLatLngs(path);
+      } else {
+        polyline = L.polyline(path, { color: '#e74c3c' }).addTo(map);
+      }
+      updateLength();
+    });
+    // Reset path button
+    resetPathBtn.addEventListener('click', () => {
+      if (polyline) {
+        map.removeLayer(polyline);
+        polyline = null;
+      }
+      path = [];
+      mapOutput.innerHTML = '';
+    });
+  }
 });
