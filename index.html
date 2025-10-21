@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sustainable Trail‑Building Lesson</title>
     <link rel="stylesheet" href="style.css" />
-    <!-- Leaflet CSS for interactive map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-oWX2jMOBwray5qKMLPUxNwBZM9A0TWPqKBrC35uo3nA=" crossorigin="" />
+    <!-- Local styles only.  Removed Leaflet CSS since we implement our own map drawing. -->
   </head>
   <body>
     <header>
@@ -132,14 +131,15 @@
       <!-- Interactive map for drawing a trail -->
       <h3>Draw Your Trail</h3>
       <p>
-        Click on the map to add points and sketch a possible trail route across
-        a topographic basemap. The total length of your drawn path will
-        update as you add points. Use the “Reset Path” button to clear the
-        drawing and start over.
+        Click on the map below to add points and sketch a possible trail route across
+        a topographic basemap of the Rangeley, Maine region. As you add points,
+        the total length of your drawn path will update automatically. Use the
+        “Reset Path” button to clear the drawing and start over.
       </p>
-      <div id="map" class="map-container"></div>
+      <!-- Canvas used for the map and drawing. The map image is loaded via JavaScript. -->
+      <canvas id="mapCanvas" class="map-canvas"></canvas>
       <button id="reset-path">Reset Path</button>
-      <div id="map-output" class="output"></div>
+      <div id="path-length" class="output"></div>
     </section>
 
     <!-- Quiz Section -->
