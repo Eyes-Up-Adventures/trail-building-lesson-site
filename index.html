@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Trail‑Building Lesson</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sustainable Trail‑Building Lesson</h1>
+    </header>
+
+    <!-- Decorative hero image -->
+    <section id="hero">
+      <img src="fd7adcf2-21ae-44d8-9e7f-ebb6972bd5ed.png" alt="Winding forest trail" />
+    </section>
+
+    <!-- Introduction and reading material -->
+    <section id="reading">
+      <h2>Guiding Principles</h2>
+      <p>
+        Building a sustainable trail begins with understanding how water and users
+        interact with the terrain. The following principles are drawn from the
+        International Mountain Bicycling Association&rsquo;s (IMBA) guide to building
+        “sweet singletrack.”
+      </p>
+      <h3>Half Rule</h3>
+      <p>
+        A trail&rsquo;s grade should never exceed half the grade of the hillside or
+        sideslope it traverses. For example, if the hillside slopes at
+        20&nbsp;percent, the trail grade should be less than 10&nbsp;percent. This
+        prevents water from running down the tread and causing erosion.
+      </p>
+      <h3>Ten Percent Average Guideline</h3>
+      <p>
+        Sustainable trails typically maintain an average grade of
+        about 10&nbsp;percent or less. Keeping the overall grade low minimizes
+        soil loss and allows the trail to undulate across the landscape rather
+        than climb directly up slopes. Steeper sections may be appropriate
+        briefly when soil and conditions allow.
+      </p>
+      <h3>Grade Reversals</h3>
+      <p>
+        Frequent grade reversals—short dips followed by a rise—force water off
+        the trail and add rhythm and fun for users. These features should occur
+        every 20–50&nbsp;feet and divide the trail into smaller segments, each
+        draining itself.
+      </p>
+      <h3>Outslope</h3>
+      <p>
+        The tread should tilt slightly down the hillside (typically around
+        5&nbsp;percent) so that water sheets off rather than running along the
+        trail.
+      </p>
+      <h3>Corridor Clearing</h3>
+      <p>
+        Before digging, the trail corridor must be cleared of low‑hanging
+        branches and brush. Most trails require a corridor 8&nbsp;feet tall and
+        wide enough for a single user; equestrian trails need a 10‑foot tall
+        corridor. Clearing vegetation improves sightlines and safety.
+      </p>
+      <h3>Design Process</h3>
+      <p>
+        IMBA recommends an 11‑step process for designing new trails: obtain
+        permission from land managers, identify property boundaries and
+        sensitive areas, choose target users, locate control points (features
+        like views and creek crossings), arrange loops and a contour route,
+        determine desired trail flow (gentle, rolling, or technical), flag the
+        general corridor and create a construction plan, conduct environmental
+        assessments, and finally flag the exact alignment before construction.
+      </p>
+    </section>
+
+    <!-- Interactive trail design tool -->
+    <section id="designer">
+      <h2>Trail Design Tool</h2>
+      <p>
+        Use the sliders and selections below to design a section of trail.
+        Recommended parameters will update automatically based on your choices.
+      </p>
+      <div class="input-group">
+        <label for="sideslope">Sideslope (0–60 %): <span id="sideslope-value">20</span>%</label>
+        <input type="range" id="sideslope" min="0" max="60" value="20" />
+      </div>
+      <div class="input-group">
+        <label for="soil">Soil Type:</label>
+        <select id="soil">
+          <option value="loam">Loam</option>
+          <option value="sandy">Sandy</option>
+          <option value="rocky">Rocky</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="users">Primary Users:</label>
+        <select id="users">
+          <option value="bikers">Bikers &amp; Hikers</option>
+          <option value="equestrian">Equestrian</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="vertical-gain">Vertical Gain (ft):</label>
+        <input type="number" id="vertical-gain" value="200" min="0" />
+      </div>
+      <div class="input-group">
+        <label for="flow">Desired Flow Style:</label>
+        <select id="flow">
+          <option value="gentle">Gentle</option>
+          <option value="rolling">Rolling</option>
+          <option value="technical">Technical</option>
+        </select>
+      </div>
+      <button id="compute">Generate Recommendations</button>
+      <div id="design-output" class="output"></div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+      <h2>Knowledge Check</h2>
+      <p>
+        Answer the questions below to test your understanding of sustainable
+        trail design principles. Click “Submit Answers” to see your score and
+        explanations.
+      </p>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. What does the half rule recommend?</p>
+          <label><input type="radio" name="q1" value="a" /> A trail’s grade
+          should be equal to the hillside grade.</label><br />
+          <label><input type="radio" name="q1" value="b" /> A trail’s grade
+          should not exceed half the hillside grade.</label><br />
+          <label><input type="radio" name="q1" value="c" /> A trail’s grade
+          can be double the hillside grade if soil is rocky.</label>
+        </div>
+        <div class="question">
+          <p>2. What is a typical average grade for sustainable trails?</p>
+          <label><input type="radio" name="q2" value="a" /> 2&nbsp;%</label><br />
+          <label><input type="radio" name="q2" value="b" /> 10&nbsp;% or
+          less</label><br />
+          <label><input type="radio" name="q2" value="c" /> 25&nbsp;%</label>
+        </div>
+        <div class="question">
+          <p>3. Why are grade reversals important?</p>
+          <label><input type="radio" name="q3" value="a" /> They improve
+          aesthetics only.</label><br />
+          <label><input type="radio" name="q3" value="b" /> They force water
+          off the trail and add riding variety.</label><br />
+          <label><input type="radio" name="q3" value="c" /> They reduce the
+          need for outslope.</label>
+        </div>
+        <div class="question">
+          <p>4. How tall should a typical trail corridor be?</p>
+          <label><input type="radio" name="q4" value="a" /> 4&nbsp;ft for
+          hikers and bikers, 6&nbsp;ft for equestrians.</label><br />
+          <label><input type="radio" name="q4" value="b" /> 8&nbsp;ft for
+          most users; 10&nbsp;ft for equestrians.</label><br />
+          <label><input type="radio" name="q4" value="c" /> 12&nbsp;ft for
+          all uses.</label>
+        </div>
+        <button type="button" id="submit-quiz">Submit Answers</button>
+        <div id="quiz-output" class="output"></div>
+      </form>
+    </section>
+
+    <!-- Footnotes -->
+    <footer>
+      <p>
+        <strong>Sources:</strong> IMBA, <em>Trail Solutions: IMBA&rsquo;s Guide to
+        Building Sweet Singletrack</em>. Key principles and guidelines are
+        summarized here for educational use.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
